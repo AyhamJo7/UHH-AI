@@ -66,27 +66,29 @@ UHH-AI/
 
 ![Architecture Diagram](docs/architecture.png)
 
+<pre>
 ┌───────────┐
 │  User 🌟  │ 
 └─────┬─────┘
       │ Web Browser
       ▼
-┌───────────────┐
-│ Frontend (React UI) │───┐
-└───────────────┘   │ HTTP/API (JSON)
-                    ▼
-      ┌────────────────────┐
-      │ Backend (FastAPI) ⚙️│───┐
-      └────────────────────┘   │ HTTP/API (Bearer Token)
-                               ▼
-                   ┌─────────────────────────┐
-                   │ OpenWebUI (AI Engine 🧠)│───┬───▶ Ollama (Local LLM)
-                   └─────────┬───────────────┘   │
-                             │                   └──▶ Tika (OCR PDFs)
-                             ▼
-                   ┌─────────────────────────┐
-                   │ Vector DB (Chroma DB 📚)│
-                   └─────────────────────────┘
+┌────────────────────┐
+│ Frontend (React UI)│───┐
+└────────────────────┘   │ HTTP/API (JSON)
+                         ▼
+┌────────────────────┐  
+│Backend (FastAPI) ⚙️ │───┐
+└────────────────────┘   │ HTTP/API (Bearer Token)
+                         ▼
+┌───────────────────────────┐
+│OpenWebUI (AI Engine 🧠)   │───┬──▶ Ollama (Local LLM)
+└───────────────┬───────────┘   │
+                │               └──▶ Tika (OCR PDFs)
+                ▼
+┌───────────────────────────┐
+│Vector DB (Chroma DB 📚)   │
+└───────────────────────────┘
+</pre>
 
 
 **Explanation of the Flow:**
